@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>send mail message with smtp</title>
+        <script src="https://kit.fontawesome.com/920c198c60.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="homestyle.css" />
+    </head>
+    <body class="bodyy">
+        <div class="container">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <h1>Get in touch</h1>
+                <p>You can contact me or send me message for more details</p>
+                <input id="Name" placeholder="Name*" type="text" required>
+                <p>Your Email:</p>
+                <input id="email" placeholder="Email*" type="email" required>
+                <p>Your phone number:</p>
+                <input id="Phone" placeholder="Phone number*" type="text" required>
+                <p>Your message:</p>
+                <textarea id="message" rows="4" placeholder="pls! Write ur msg here..."></textarea>
+                <button type="submit"><b>Send</b></button>
+            </form>
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
+            <script>
+                function sendEmail(){
+                    Email.send({
+                        host : "smtp.gmail.com",
+                        Username : "JeremyDusabeyezu1@gmail.com",
+                        Passsword : "",
+                        To : 'mugabojeremy2@gmail.com',
+                        From : document.getElementById("email").value,
+                        Subject : "New contact From Enquiry",
+                        Body : "Name: " + document.getElementById("Name").value
+                             + "<br> Email: " + document.getElementById("email").value
+                             + "<br> Phone: " + document.getElementById("Phone").value
+                             + "<br> Message: " + document.getElementById("message").value
+                    }).then(
+                        message => alert("messsage sent successfuly")
+                    );
+                }
+            </script>
+        </div>
+    </body>
+</html>
